@@ -1,4 +1,4 @@
-using Algorithms.BinarySearch;
+using Algorithms;
 
 namespace Tests
 {
@@ -25,6 +25,5 @@ namespace Tests
 
             Assert.Equal(5, result);
         }
-
     }
 }

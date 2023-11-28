@@ -1,4 +1,4 @@
-﻿namespace Algorithms.BinarySearch
+﻿namespace Algorithms
 {
     /// <summary>
     /// Finds the position of a target value within a sorted array;

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms", "BinarySearch\Algorithms.csproj", "{7D7F48F7-3457-4F45-BAD0-8BA84DF6C6EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms", "Algorithms\Algorithms.csproj", "{7D7F48F7-3457-4F45-BAD0-8BA84DF6C6EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{EBCB046B-AE15-42D0-A0D5-BD466D5D931D}"
 EndProject
