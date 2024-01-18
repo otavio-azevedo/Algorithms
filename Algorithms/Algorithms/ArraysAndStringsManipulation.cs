@@ -1,41 +1,80 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Algorithms
+﻿namespace Algorithms
 {
     public static class ArraysAndStringsManipulation
     {
+        /// <summary>
+        /// Is Unique: Implement an algorithm to determine if a string has all unique characters.
+        /// </summary>
+        public static bool IsUnique(string input)
+        {
+            if (input.Length <= 1)
+                return true;
+
+            var charSet = new HashSet<char>();
+
+            foreach (char c in input)
+            {
+                if (charSet.Contains(c))
+                    return false;
+
+                charSet.Add(c);
+            }
+
+            return true;
+        }
+
+        ///<summary>
+        ///Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+        /// </summary>
+        public static bool CheckPermutation(string word1, string word2)
+        {
+            if (string.IsNullOrEmpty(word1) || string.IsNullOrEmpty(word2))
+                return false;
+
+            if (word1.Length != word2.Length)
+                return false;
+
+            //count frequencies of each character on first word
+            var dictCharCounter = new Dictionary<char, int>();
+
+            foreach (char n in word1)
+            {
+                if (dictCharCounter.ContainsKey(n))
+                {
+                    dictCharCounter[n]++;
+                }
+                else
+                {
+                    dictCharCounter.Add(n, 1);
+
+                }
+            }
+
+            //compare frequencies of each word using dictCharCounter
+            foreach (char n in word2)
+            {
+                if (!dictCharCounter.ContainsKey(n))
+                    return false;
+
+                dictCharCounter[n]--;
+
+                if (dictCharCounter[n] < 0)
+                    return false;
+            }
+
+            return true;
+        }
+
         ///<summary>
         ///URLify: Write a method to replace all spaces in a string with '%20'. You may assume that the string
         ///has sufficient space at the end to hold the additional characters, and that you are given the "true"
         ///length of the string.
         /// </summary>
-        public static string URLify(char[] charArray, int realLength)
+        public static char[] URLify(char[] charArray, int realLength)
         {
-            int spaceCount = 0;
-            int index = 0;
-            int i = 0;
+            int index = charArray.Length;
 
-            //Counting space ocurrences
-            for (i = 0; i < realLength; i++)
-            {
-                if (charArray[i] == ' ')
-                    spaceCount++;
-            }
-
-            if (realLength < charArray.Length)
-                charArray[realLength] = '\0';
-
-            index = charArray.Length;
-
-
-            for (i = realLength - 1; i >= 0; i--)
+            for (int i = realLength - 1; i >= 0; i--)
             {
                 // Replace spaces (' ') for %20
                 if (charArray[i] == ' ')
@@ -53,7 +92,7 @@ namespace Algorithms
                 }
             }
 
-            return new string(charArray);
+            return charArray;
         }
 
         ///<summary>

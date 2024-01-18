@@ -65,48 +65,7 @@ namespace Algorithms
             return true;
         }
 
-        ///<summary>
-        ///Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
-        /// </summary>
-        public static bool CheckPermutation(string word1, string word2)
-        {
-            if (string.IsNullOrEmpty(word1) || string.IsNullOrEmpty(word2))
-                return false;
 
-            if (word1.Length != word2.Length)
-                return false;
-
-            //count frequencies of each character on first word
-            var dictCharCounter = new Dictionary<char, int>();
-
-            foreach (char n in word1)
-            {
-                if (dictCharCounter.ContainsKey(n))
-                {
-                    dictCharCounter[n]++;
-                }
-                else
-                {
-                    dictCharCounter.Add(n, 1);
-
-                }
-            }
-
-            //compare frequencies of each word using dictCharCounter
-            foreach (char n in word2)
-            {
-                if (!dictCharCounter.ContainsKey(n))
-                    return false;
-
-                dictCharCounter[n]--;
-
-                if (dictCharCounter[n] != 0)
-                    return false;
-            }
-
-            return true;
-
-        }
 
         /// <summary>
         /// Implement a function called, areThereDuplicates which accepts a variable number of arguments, 
@@ -130,25 +89,6 @@ namespace Algorithms
             return false;
         }
 
-        /// <summary>
-        /// Is Unique: Implement an algorithm to determine if a string has all unique characters.
-        /// </summary>
-        public static bool IsUnique(string input)
-        {
-            if (input.Length <= 1)
-                return true;
-
-            var charSet = new HashSet<char>();
-
-            foreach (char c in input)
-            {
-                if (charSet.Contains(c))
-                    return false;
-
-                charSet.Add(c);
-            }
-
-            return true;
-        }
+        
     }
 }

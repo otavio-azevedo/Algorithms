@@ -28,25 +28,8 @@ namespace Tests
             Assert.Equal(expectedResult, result);
         }
 
-        [Theory]
-        [InlineData("abc", true)]
-        [InlineData("abbc", false)]
+       
 
-        public void IsUniqueTests(string input, bool expectedResult)
-        {
-            var result = FrequencyCounter.IsUnique(input);
-            Assert.Equal(expectedResult, result);
-        }
-
-        [Theory]
-        [InlineData("star", "rats", true)]
-        [InlineData("star", "rass", false)]
-        [InlineData("staa", "ssta", false)]
-
-        public void CheckPermutation(string word1, string word2, bool expectedResult)
-        {
-            var result = FrequencyCounter.CheckPermutation(word1, word2);
-            Assert.Equal(expectedResult, result);
-        }
+        
     }
 }

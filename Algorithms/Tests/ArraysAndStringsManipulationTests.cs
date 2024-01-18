@@ -9,15 +9,36 @@ namespace Tests
 {
     public class ArraysAndStringsManipulationTests
     {
-        [Fact]
-        public void URLifyTest()
+        [Theory]
+        [InlineData("abc", true)]
+        [InlineData("abbc", false)]
+
+        public void IsUniqueTests(string input, bool expectedResult)
         {
-            string str = "Mr John Smith    ";
-            int realLength = 13;
+            var result = ArraysAndStringsManipulation.IsUnique(input);
+            Assert.Equal(expectedResult, result);
+        }
 
-            var result = ArraysAndStringsManipulation.URLify(str.ToCharArray(), realLength);
+        [Theory]
+        [InlineData("sstar", "ratss", true)]
+        [InlineData("star", "rats", true)]
+        [InlineData("star", "arts", true)]
+        [InlineData("star", "rass", false)]
+        [InlineData("staa", "ssta", false)]
 
-            Assert.Equal("Mr%20John%20Smith", result);
+        public void CheckPermutation(string word1, string word2, bool expectedResult)
+        {
+            var result = ArraysAndStringsManipulation.CheckPermutation(word1, word2);
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Theory]
+        [InlineData("Mr John Smith    ", 13, "Mr%20John%20Smith")]
+        [InlineData("Hello World  ", 11, "Hello%20World")]
+        public void URLifyTest(string input, int realLength, string expectedResult)
+        {
+            var result = ArraysAndStringsManipulation.URLify(input.ToCharArray(), realLength);
+            Assert.Equal(expectedResult.ToCharArray(), result);
         }
 
         [Theory]
