@@ -1,4 +1,5 @@
 ﻿using Algorithms;
+using Algorithms.OOP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,9 +46,9 @@ namespace Tests
         [InlineData("aab", true)]
         [InlineData("racecar", true)]
         [InlineData("abc", false)]
-        public void PalindromePermutationTest(string input, bool expectedResult)
+        public void IsPalindromePermutationTest(string input, bool expectedResult)
         {
-            var result = ArraysAndStringsManipulation.PalindromePermutation(input);
+            var result = ArraysAndStringsManipulation.IsPalindromePermutation(input);
             Assert.Equal(expectedResult, result);
         }
 
@@ -70,6 +71,15 @@ namespace Tests
         public void OneAway(string inputA, string inputB, bool expectedResult)
         {
             var result = ArraysAndStringsManipulation.OneEditAway(inputA, inputB);
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Theory]
+        [InlineData("xabcdey", "ab*de", 1)]
+        [InlineData("juliasamanthantajulia", "ant", 8)]
+        public void FirstOccurrence(string inputA, string inputB, int expectedResult)
+        {
+            var result = ArraysAndStringsManipulation.FirstOccurrence(inputA, inputB);
             Assert.Equal(expectedResult, result);
         }
     }

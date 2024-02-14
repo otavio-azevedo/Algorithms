@@ -1,4 +1,7 @@
-﻿namespace Algorithms
+﻿using System.Globalization;
+using System.Text.Json;
+
+namespace Algorithms
 {
     public static class ArraysAndStringsManipulation
     {
@@ -100,7 +103,7 @@
         /// drome.A palindrome is a word or phrase that is the same forwards and backwards.A permutation
         /// is a rearrangement of letters.The palindrome does not need to be limited to just dictionary words.
         /// </summary>
-        public static bool PalindromePermutation(string input)
+        public static bool IsPalindromePermutation(string input)
         {
             // Array to store char frequencies, considering ASCII
             var asciiChars = new int[128];
@@ -230,5 +233,32 @@
             return true;
         }
 
+
+        /// <summary>
+        /// Complete the 'firstOccurrence' function below.
+        /// The function is expected to return an INTEGER.
+        /// </summary>
+        public static int FirstOccurrence(string s, string x)
+        {
+            if (string.IsNullOrEmpty(x))
+                return -1;
+
+            // Iterate only until where makes sense
+            // e.g: xabcdey | ab*de
+            // e.g: xab | ab*de
+            for (int i = 0; i < s.Length + 1 - x.Length; i++)
+            {
+                for (int j = 0; j < x.Length; j++)
+                {
+                    if (s[i + j] != x[j] && x[j] != '*')
+                        break;
+
+                    if (j == x.Length - 1)
+                        return i;
+                }
+            }
+
+            return -1;
+        }
     }
 }

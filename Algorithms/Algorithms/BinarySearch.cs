@@ -22,8 +22,7 @@
                 {
                     return middleIndex; //found index
                 }
-
-                if (guessValue > keyValue)
+                else if (guessValue > keyValue)
                 {
                     endIndex = middleIndex - 1; //aim the left sub-array halve on next iteration
                 }
