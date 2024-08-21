@@ -1,5 +1,6 @@
 # First Unique Character in a String:
-# Given a string, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+# Given a string, find the first non-repeating character in it and return its index.
+# If it does not exist, return -1.
 
 def first_unique_character(word: str):
     dictionary = {}
@@ -7,7 +8,7 @@ def first_unique_character(word: str):
     # iterate counting frequencies
     for char in word:
         # add or update entries on dictionary
-        dictionary[char] = dictionary.get(key=char, default=0) + 1
+        dictionary[char] = dictionary.get(char, 0) + 1
 
     # iterate to find first first unique character
     for index, char in enumerate(word):
@@ -17,7 +18,10 @@ def first_unique_character(word: str):
     # if no unique, return -1
     return -1
 
+# ----------------------------------------------------------------
+#  Tests
+# ----------------------------------------------------------------
 
-# Tests
+
 result = first_unique_character("abbc")
 print("Success" if result == 0 else "Fail")

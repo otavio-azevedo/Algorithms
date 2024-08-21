@@ -2,18 +2,20 @@
 
 def is_unique(text: str):
 
-    charSet = []
+    list = []
 
     for character in text:
-        if charSet.__contains__(character):
+        if character in list:
             return False
         else:
-            charSet.append(character)
+            list.append(character)
 
     return True
 
 
-# Tests
+# ----------------------------------------------------------------
+#  Tests
+# ----------------------------------------------------------------
 
 # 1. "simple" word, with no duplicates expect True
 result = is_unique("tes")
