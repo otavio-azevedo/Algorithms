@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace Algorithms
@@ -89,6 +90,35 @@ namespace Algorithms
             return false;
         }
 
-        
+        /// <summary>
+        ///Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+        ///You may assume that each input would have exactly one solution, and you may not use the same element twice.
+        ///You can return the answer in any order.
+        /// </summary>
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            var numsDict = new Dictionary<int, int>();
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+
+                // Calculate difference
+                int difference = target - nums[i];
+
+                //Check if the complement exists in the dictionary
+                if (numsDict.TryGetValue(difference, out int diffIndex))
+                {
+                    //If it exists, return the current index and the index of the complement.
+                    return new int[2] { diffIndex, i };
+                }
+
+                //If it doesn’t exist, add the current number and its index to the dictionary.
+                numsDict.Add(nums[i], i);
+            }
+
+            return Array.Empty<int>();
+        }
+
+
     }
 }

@@ -260,5 +260,103 @@ namespace Algorithms
 
             return -1;
         }
+
+        /// <summary>
+        /// Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+        ///An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.You may assume all four edges of the grid are all surrounded by water.
+        /// </summary>
+        /// <returns>Number of islands</returns>
+        public static int NumIslands(char[][] grid)
+        {
+            if (grid == null || grid.Length == 0) return 0;
+
+            int numIslands = 0;
+            int rows = grid.Length;
+            int cols = grid[0].Length;
+            HashSet<(int, int)> visited = new HashSet<(int, int)>();  // HashSet to store visited cells
+
+            // Helper method to perform DFS without modifying the grid
+            void DFS(char[][] grid, int row, int col)
+            {
+                // Base cases: if out of bounds
+                if (row < 0 || row >= rows || col < 0 || col >= cols || 
+                    grid[row][col] == '0' || // at water
+                    visited.Contains((row, col))) // already visited
+                {
+                    return;
+                }
+
+                // Mark the current cell as visited by adding its coordinates to the HashSet
+                visited.Add((row, col));
+
+                // Explore all four directions
+                DFS(grid, row - 1, col); // up
+                DFS(grid, row + 1, col); // down
+                DFS(grid, row, col - 1); // left
+                DFS(grid, row, col + 1); // right
+            }
+
+            // Traverse the entire grid
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    // Whenever a new piece of land is found and it hasn't been visited, increment the number of islands
+                    if (grid[row][col] == '1' && !visited.Contains((row, col)))
+                    {
+                        numIslands++;
+                        
+                        // Perform DFS to mark the entire island as visited
+                        DFS(grid, row, col);
+                    }
+                }
+            }
+
+            return numIslands;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Roman number</returns>
+        public static string IntToRoman(int num)
+        {
+            if (num <= 0 || num >= 4000)
+            {
+                throw new ArgumentOutOfRangeException("Input must be between 1 and 3999.");
+            }
+
+            // Mapping of values to Roman numerals (including subtractive forms)
+            var romanMapping = new Dictionary<int, string>
+            {
+                { 1000, "M" },
+                { 900, "CM" },// added
+                { 500, "D" },
+                { 400, "CD" },// added
+                { 100, "C" },
+                { 90, "XC" },// added
+                { 50, "L" },
+                { 40, "XL" },// added
+                { 10, "X" },
+                { 9, "IX" },// added
+                { 5, "V" },
+                { 4, "IV" },// added
+                { 1, "I" }
+            };
+
+            var result = new System.Text.StringBuilder();
+
+            // Iterate through the dictionary keys following descending order
+            foreach (var key in romanMapping.Keys)
+            {
+                while (num >= key)
+                {
+                    result.Append(romanMapping[key]);
+                    num -= key; // Subtract the value from num
+                }
+            }
+
+            return result.ToString();
+        }
     }
 }

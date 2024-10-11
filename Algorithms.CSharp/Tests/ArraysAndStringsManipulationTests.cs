@@ -82,5 +82,19 @@ namespace Tests
             var result = ArraysAndStringsManipulation.FirstOccurrence(inputA, inputB);
             Assert.Equal(expectedResult, result);
         }
+
+        [Fact]
+        public void NumIslandsTest()
+        {
+            char[][] grid = new char[][] {
+            new char[] { '1', '1', '0', '0' },
+            new char[] { '1', '1', '0', '0' },
+            new char[] { '0', '0', '1', '1' },
+            new char[] { '0', '0', '1', '1' }
+            };
+
+            var result = ArraysAndStringsManipulation.NumIslands(grid);
+            Assert.Equal(2, result);
+        }
     }
 }

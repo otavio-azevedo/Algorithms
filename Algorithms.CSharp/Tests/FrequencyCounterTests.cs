@@ -28,8 +28,19 @@ namespace Tests
             Assert.Equal(expectedResult, result);
         }
 
-       
 
-        
+        [Theory]
+        [InlineData(new int[] { 2, 7, 11, 15 }, 9, new int[] { 0, 1 })]
+        [InlineData(new int[] { 1, 7, 11, 15 }, 16, new int[] { 0, 3 })]
+        public void TwoSumTests(int[] nums, int target, int[] expectedResult)
+        {
+            var result = FrequencyCounter.TwoSum(nums, target);
+            Assert.Equal(expectedResult, result);
+        }
+
+
+
+
+
     }
 }
